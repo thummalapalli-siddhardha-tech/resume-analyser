@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Analyzer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">AI Career Guide</div>
+        <nav class="main-nav">
+          <a href="{{ url_for('index') }}">Home</a>
+          <a href="{{ url_for('career_guide') }}">AI Career Guide</a>
+          <a href="{{ url_for('resume_analyzer') }}">Resume Analyzer</a>
+          <a href="{{ url_for('about') }}">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <div class="container form-container">
+        <div class="section-heading">
+          <span class="eyebrow">AI Resume Analyzer</span>
+          <h1>Upload Your Resume and Compare It Against Your Target Role</h1>
+        </div>
+
+        {% if error %}
+          <div class="error-box">{{ error }}</div>
+        {% endif %}
+
+        <form method="post" action="{{ url_for('analyze_resume') }}" enctype="multipart/form-data" class="career-form card-panel">
+          <div class="form-grid">
+            <label>
+              <span>Upload Resume</span>
+              <input type="file" name="resume_file" accept=".pdf,.docx" required />
+            </label>
+
+            <label>
+              <span>Target Role</span>
+              <select name="target_role" required>
+                {% for role in roles %}
+                  <option value="{{ role }}">{{ role }}</option>
+                {% endfor %}
+              </select>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Analyze Resume</button>
+        </form>
+      </div>
+    </main>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

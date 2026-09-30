@@ -1,0 +1,8 @@
+[
+  {"Portal": "LinkedIn Jobs", "Description": "Strong platform for professional networking and role-specific opportunities.", "Base URL": "https://www.linkedin.com/jobs", "Search URL pattern": "https://www.linkedin.com/jobs/search/?keywords={query}"},
+  {"Portal": "Naukri", "Description": "Popular job portal for India-based openings across technical and non-technical fields.", "Base URL": "https://www.naukri.com/", "Search URL pattern": "https://www.naukri.com/{query}-jobs"},
+  {"Portal": "Indeed", "Description": "Large international job listing platform with filters for role, location, and experience.", "Base URL": "https://www.indeed.com/", "Search URL pattern": "https://www.indeed.com/jobs?q={query}"},
+  {"Portal": "Glassdoor", "Description": "Useful for comparing employer reviews, salary ranges, and open roles.", "Base URL": "https://www.glassdoor.com/", "Search URL pattern": "https://www.glassdoor.com/Job/jobs.htm?suggestCount=0&suggestChosen=false&clickSource=searchBtn&typedKeyword={query}&sc.keyword={query}"},
+  {"Portal": "Internshala", "Description": "Helpful for internships, freshers, and early-career opportunities.", "Base URL": "https://internshala.com/", "Search URL pattern": "https://internshala.com/jobs/{query}-jobs"},
+  {"Portal": "Wellfound", "Description": "Relevant for startup and product-company job opportunities.", "Base URL": "https://wellfound.com/", "Search URL pattern": "https://wellfound.com/jobs?query={query}"}
+]

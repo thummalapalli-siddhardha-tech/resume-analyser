@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Career Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">AI Career Guide</div>
+        <nav class="main-nav">
+          <a href="{{ url_for('index') }}">Home</a>
+          <a href="{{ url_for('career_guide') }}">AI Career Guide</a>
+          <a href="{{ url_for('resume_analyzer') }}">Resume Analyzer</a>
+          <a href="{{ url_for('about') }}">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <div class="container form-container">
+        <div class="section-heading">
+          <span class="eyebrow">AI Career Guide</span>
+          <h1>Build Your Personalized Career Roadmap</h1>
+        </div>
+
+        <form method="post" action="{{ url_for('generate_roadmap') }}" class="career-form card-panel">
+          <div class="form-grid">
+            <label>
+              <span>Name</span>
+              <input type="text" name="name" placeholder="Rahul" required />
+            </label>
+
+            <label>
+              <span>Target Job Role</span>
+              <select name="target_role" required>
+                {% for role in roles %}
+                  <option value="{{ role }}">{{ role }}</option>
+                {% endfor %}
+              </select>
+            </label>
+
+            <label class="full-width">
+              <span>Current Skills</span>
+              <textarea name="current_skills" rows="4" placeholder="Python, HTML, CSS, SQL" required></textarea>
+            </label>
+
+            <label>
+              <span>Available Learning Time</span>
+              <select name="available_time">
+                <option>1 hour/day</option>
+                <option selected>2 hours/day</option>
+                <option>3 hours/day</option>
+                <option>4 hours/day</option>
+                <option>5+ hours/day</option>
+              </select>
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Generate My Career Plan</button>
+        </form>
+      </div>
+    </main>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

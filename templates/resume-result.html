@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume Analysis Result</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">AI Career Guide</div>
+        <nav class="main-nav">
+          <a href="{{ url_for('index') }}">Home</a>
+          <a href="{{ url_for('career_guide') }}">AI Career Guide</a>
+          <a href="{{ url_for('resume_analyzer') }}">Resume Analyzer</a>
+          <a href="{{ url_for('about') }}">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <div class="container result-layout">
+        <section class="card-panel score-panel">
+          <div class="score-box">
+            <span class="eyebrow">ATS SCORE</span>
+            <h2>{{ analysis.ats_score }}/100</h2>
+            <p>Target: {{ target_role }}</p>
+          </div>
+        </section>
+
+        {% if ai_guidance %}
+          <section class="card-panel">
+            <h3>AI Guidance</h3>
+            <p>{{ ai_guidance }}</p>
+          </section>
+        {% endif %}
+
+        <section class="card-panel">
+          <h3>ATS Compatibility Breakdown</h3>
+          <div class="score-metrics">
+            <div class="metric"><span>Keyword Match</span><strong>{{ analysis.keyword_match }}%</strong></div>
+            <div class="metric"><span>Skills Match</span><strong>{{ analysis.skills_match }}%</strong></div>
+            <div class="metric"><span>Role Relevance</span><strong>{{ analysis.role_relevance }}%</strong></div>
+            <div class="metric"><span>Resume Structure</span><strong>{{ analysis.resume_structure }}%</strong></div>
+            <div class="metric"><span>Project Relevance</span><strong>{{ analysis.project_relevance }}%</strong></div>
+          </div>
+          <p class="note">This is an AI-generated estimate for guidance. Actual ATS scoring varies by employer, software, job description, and configuration.</p>
+        </section>
+
+        <section class="analysis-grid">
+          <div class="card-panel">
+            <h3>✓ Strengths</h3>
+            <ul class="check-list">
+              {% for item in analysis.strengths %}
+                <li>✓ {{ item }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+
+          <div class="card-panel">
+            <h3>⚠ Improve</h3>
+            <ul class="warning-list">
+              {% for item in analysis.missing_skills %}
+                <li>• {{ item }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+        </section>
+
+        <section class="card-panel">
+          <h3>How to Improve Your Resume</h3>
+          <div class="improvement-sections">
+            <div>
+              <h4>1. Skills</h4>
+              <p><strong>Skills already present:</strong> {{ ', '.join(analysis.suggestions.skills.present) if analysis.suggestions.skills.present else 'No clear matches found.' }}</p>
+              <p><strong>Relevant skills to consider developing:</strong> {{ ', '.join(analysis.suggestions.skills.missing) if analysis.suggestions.skills.missing else 'No major gaps detected.' }}</p>
+            </div>
+            <div>
+              <h4>2. Keywords</h4>
+              <p>{{ ', '.join(analysis.suggestions.keywords) if analysis.suggestions.keywords else 'Your resume appears aligned with foundational keywords for the role.' }}</p>
+            </div>
+            <div>
+              <h4>3. Projects</h4>
+              <ul>
+                {% for suggestion in analysis.suggestions.projects %}
+                  <li>{{ suggestion }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div>
+              <h4>4. Experience</h4>
+              <ul>
+                {% for suggestion in analysis.suggestions.experience %}
+                  <li>{{ suggestion }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div>
+              <h4>5. Summary</h4>
+              <ul>
+                {% for suggestion in analysis.suggestions.summary %}
+                  <li>{{ suggestion }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div>
+              <h4>6. Certifications</h4>
+              <ul>
+                {% for suggestion in analysis.suggestions.certifications %}
+                  <li>{{ suggestion }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="card-panel">
+          <h3>What You Should Learn Next</h3>
+          <ol class="priority-list">
+            {% for skill in analysis.learning_next %}
+              <li>
+                <strong>{{ skill }}</strong>
+                <p>Why you should learn it: This is highly relevant to the target role and aligns with the resume gaps identified during analysis.</p>
+              </li>
+            {% endfor %}
+          </ol>
+        </section>
+
+        <section class="card-panel">
+          <h3>Free Learning Resources</h3>
+          <div class="resource-grid">
+            {% for item in free_resources %}
+              <article class="resource-card">
+                <h4>{{ item.resource.Resource }}</h4>
+                <p><strong>Platform:</strong> {{ item.resource.Platform }}</p>
+                <p><strong>Topic:</strong> {{ item.skill }}</p>
+                <p><strong>Description:</strong> {{ item.resource.Description }}</p>
+                <a href="{{ item.resource.URL }}" target="_blank" rel="noopener">Open Resource →</a>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section class="card-panel">
+          <h3>Relevant Certifications</h3>
+          <div class="resource-grid">
+            {% for cert in certifications %}
+              <article class="resource-card">
+                <h4>{{ cert.Certification }}</h4>
+                <p><strong>Provider:</strong> {{ cert.Provider }}</p>
+                <p><strong>Relevant Skill:</strong> {{ cert.Skills[0] }}</p>
+                <p><strong>Why Consider It:</strong> {{ cert.Reason }}</p>
+                <a href="{{ cert.URL }}" target="_blank" rel="noopener">Official Page →</a>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section class="card-panel">
+          <h3>Top Paid Courses</h3>
+          <div class="resource-grid">
+            {% for course in paid_courses %}
+              <article class="resource-card">
+                <h4>{{ course.Course }}</h4>
+                <p><strong>Platform:</strong> {{ course.Platform }}</p>
+                <p><strong>Skills Covered:</strong> {{ ', '.join(course.Skills) }}</p>
+                <p><strong>Level:</strong> {{ course.Level }}</p>
+                <p><strong>Approximate Duration:</strong> {{ course['Approximate Duration'] }}</p>
+                <p><strong>Price:</strong> {{ course.Price }}</p>
+                <a href="{{ course.URL }}" target="_blank" rel="noopener">View Course →</a>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section class="card-panel">
+          <h3>Find Jobs for Your Target Role</h3>
+          <div class="resource-grid">
+            {% for portal in job_portals %}
+              <article class="resource-card">
+                <h4>{{ portal.portal }}</h4>
+                <p>{{ portal.description }}</p>
+                <a href="{{ portal.search_url }}" target="_blank" rel="noopener">Search Jobs →</a>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

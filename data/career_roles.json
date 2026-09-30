@@ -1,0 +1,195 @@
+[
+  {
+    "Role": "Python Developer",
+    "required_skills": [
+      "Python",
+      "SQL",
+      "Flask",
+      "REST APIs",
+      "Git/GitHub",
+      "Database Integration",
+      "Testing",
+      "Deployment"
+    ],
+    "optional_skills": [
+      "Docker",
+      "NoSQL",
+      "Celery",
+      "AWS"
+    ],
+    "tools": ["Python", "Flask", "PostgreSQL", "Git", "Docker"],
+    "common_certifications": ["Python Institute PCAP", "Google Cloud Associate Engineer", "AWS Cloud Practitioner"],
+    "learning_areas": ["Backend Development", "APIs", "Database Design", "Deployment"]
+  },
+  {
+    "Role": "Java Developer",
+    "required_skills": [
+      "Java",
+      "Spring Boot",
+      "OOP",
+      "SQL",
+      "REST APIs",
+      "Git/GitHub",
+      "Unit Testing",
+      "Deployment"
+    ],
+    "optional_skills": ["Microservices", "Docker", "Kafka"],
+    "tools": ["Java", "Spring Boot", "Maven", "Git", "MySQL"],
+    "common_certifications": ["Oracle Java Certification", "Spring Professional Certification"],
+    "learning_areas": ["Java Development", "Backend APIs", "Testing"]
+  },
+  {
+    "Role": "Full Stack Developer",
+    "required_skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Node.js",
+      "SQL",
+      "REST APIs",
+      "Git/GitHub",
+      "Deployment"
+    ],
+    "optional_skills": ["TypeScript", "Docker", "MongoDB", "AWS"],
+    "tools": ["HTML", "CSS", "JavaScript", "React", "Node.js", "Git"],
+    "common_certifications": ["Meta Front-End Developer", "AWS Cloud Practitioner"],
+    "learning_areas": ["Frontend", "Backend", "DevOps Basics"]
+  },
+  {
+    "Role": "Frontend Developer",
+    "required_skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Responsive Design",
+      "Accessibility",
+      "Git/GitHub",
+      "UI/UX Basics",
+      "Testing"
+    ],
+    "optional_skills": ["React", "TypeScript", "Figma"],
+    "tools": ["HTML", "CSS", "JavaScript", "Figma", "Git"],
+    "common_certifications": ["Meta Front-End Developer"],
+    "learning_areas": ["Web Design", "JavaScript", "Responsive UI", "Build Tools"]
+  },
+  {
+    "Role": "Backend Developer",
+    "required_skills": [
+      "SQL",
+      "REST APIs",
+      "Python",
+      "Node.js",
+      "Authentication",
+      "Git/GitHub",
+      "Database Integration",
+      "Deployment"
+    ],
+    "optional_skills": ["Docker", "Caching", "Microservices"],
+    "tools": ["Node.js", "Express", "Python", "PostgreSQL", "Git"],
+    "common_certifications": ["AWS Cloud Practitioner", "Microsoft Azure Fundamentals"],
+    "learning_areas": ["APIs", "Databases", "Security", "Deployment"]
+  },
+  {
+    "Role": "Data Analyst",
+    "required_skills": [
+      "Excel",
+      "SQL",
+      "Python",
+      "Data Visualization",
+      "Statistics",
+      "Power BI",
+      "Data Cleaning",
+      "Business Communication"
+    ],
+    "optional_skills": ["Tableau", "R", "Machine Learning Basics"],
+    "tools": ["Excel", "SQL", "Power BI", "Python"],
+    "common_certifications": ["Google Data Analytics", "Microsoft PL-300"],
+    "learning_areas": ["Data Analysis", "Visualization", "Business Reporting"]
+  },
+  {
+    "Role": "Data Scientist",
+    "required_skills": [
+      "Python",
+      "Statistics",
+      "Machine Learning",
+      "SQL",
+      "Data Cleaning",
+      "Data Visualization",
+      "Model Evaluation",
+      "Communication"
+    ],
+    "optional_skills": ["Deep Learning", "MLOps", "Cloud"],
+    "tools": ["Python", "Pandas", "Scikit-learn", "Jupyter", "SQL"],
+    "common_certifications": ["Google Advanced Data Analytics", "AWS Machine Learning Specialty"],
+    "learning_areas": ["ML Fundamentals", "Statistics", "Experimentation"]
+  },
+  {
+    "Role": "Machine Learning Engineer",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "Data Preprocessing",
+      "Model Deployment",
+      "Statistics",
+      "SQL",
+      "Git/GitHub",
+      "MLOps"
+    ],
+    "optional_skills": ["Deep Learning", "Cloud", "Docker"],
+    "tools": ["Python", "Scikit-learn", "TensorFlow", "Docker", "Git"],
+    "common_certifications": ["AWS Machine Learning Engineer", "Google Cloud ML"],
+    "learning_areas": ["ML Systems", "Model Ops", "Production Deployment"]
+  },
+  {
+    "Role": "Cloud Engineer",
+    "required_skills": [
+      "Cloud Fundamentals",
+      "Linux",
+      "Networking",
+      "Security Basics",
+      "Python",
+      "Terraform",
+      "CI/CD",
+      "Deployment"
+    ],
+    "optional_skills": ["AWS", "Azure", "Docker", "Kubernetes"],
+    "tools": ["AWS", "Azure", "Linux", "Terraform", "Git"],
+    "common_certifications": ["AWS Solutions Architect", "Azure Administrator"],
+    "learning_areas": ["Cloud Architecture", "Networking", "DevOps" ]
+  },
+  {
+    "Role": "Cybersecurity Analyst",
+    "required_skills": [
+      "Networking",
+      "Linux",
+      "Security Fundamentals",
+      "SIEM",
+      "Threat Analysis",
+      "Python",
+      "Risk Assessment",
+      "Documentation"
+    ],
+    "optional_skills": ["Cloud Security", "Ethical Hacking", "Forensics"],
+    "tools": ["Linux", "Wireshark", "SIEM Tools", "Python"],
+    "common_certifications": ["CompTIA Security+", "CEH"],
+    "learning_areas": ["Cybersecurity Basics", "Threat Intelligence", "Incident Response"]
+  },
+  {
+    "Role": "DevOps Engineer",
+    "required_skills": [
+      "Linux",
+      "Git/GitHub",
+      "CI/CD",
+      "Docker",
+      "Kubernetes",
+      "Cloud Fundamentals",
+      "Monitoring",
+      "Infrastructure as Code"
+    ],
+    "optional_skills": ["Terraform", "AWS", "Azure", "Python"],
+    "tools": ["Linux", "Docker", "Kubernetes", "Git", "Terraform"],
+    "common_certifications": ["AWS DevOps Engineer", "Docker Certified Associate"],
+    "learning_areas": ["Automation", "CI/CD", "Infrastructure Management"]
+  }
+]

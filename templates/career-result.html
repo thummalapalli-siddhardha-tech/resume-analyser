@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Career Plan Result</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">AI Career Guide</div>
+        <nav class="main-nav">
+          <a href="{{ url_for('index') }}">Home</a>
+          <a href="{{ url_for('career_guide') }}">AI Career Guide</a>
+          <a href="{{ url_for('resume_analyzer') }}">Resume Analyzer</a>
+          <a href="{{ url_for('about') }}">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <div class="container result-layout">
+        <section class="card-panel summary-panel">
+          <span class="eyebrow">Career Profile</span>
+          <h1>{{ name }}, your learning roadmap for {{ target_role }}</h1>
+          <p><strong>Current skills:</strong> {{ ', '.join(current_skills) if current_skills else 'Not provided' }}</p>
+          <p><strong>Available learning time:</strong> {{ available_time }}</p>
+        </section>
+
+        {% if ai_guidance %}
+          <section class="card-panel">
+            <h3>AI Guidance</h3>
+            <p>{{ ai_guidance }}</p>
+          </section>
+        {% endif %}
+
+        <section class="card-panel">
+          <h3>AI Skill Gap Analysis</h3>
+          <div class="analysis-columns">
+            <div>
+              <h4>Existing Skills</h4>
+              <ul class="check-list">
+                {% for skill in current_skills %}
+                  <li>✓ {{ skill }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div>
+              <h4>Skills to Develop</h4>
+              <ul class="bullet-list">
+                {% for skill in missing_skills %}
+                  <li>• {{ skill }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="card-panel">
+          <h3>30-Day Learning Roadmap</h3>
+          <div class="roadmap-list">
+            {% for day in roadmap %}
+              <article class="roadmap-item">
+                <div class="day-tag">Day {{ day.day }}</div>
+                <h4>{{ day.topic }}</h4>
+                <div class="roadmap-body">
+                  <p><strong>Learn:</strong></p>
+                  <ul>
+                    {% for objective in day.objectives %}
+                      <li>{{ objective }}</li>
+                    {% endfor %}
+                  </ul>
+                  <p><strong>Practice:</strong> {{ day.practice }}</p>
+                  <p><strong>Time:</strong> {{ day.time }}</p>
+                  <p><strong>Resources:</strong></p>
+                  <ul>
+                    {% for resource in day.resources %}
+                      <li><a href="{{ resource.url }}" target="_blank" rel="noopener">{{ resource.name }} ({{ resource.platform }})</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section class="card-panel">
+          <h3>Learning Resources</h3>
+          <div class="resource-grid">
+            {% for item in resources %}
+              <article class="resource-card">
+                <h4>{{ item.resource.Resource }}</h4>
+                <p><strong>Platform:</strong> {{ item.resource.Platform }}</p>
+                <p><strong>Topic:</strong> {{ item.skill }}</p>
+                <p><strong>Description:</strong> {{ item.resource.Description }}</p>
+                <a href="{{ item.resource.URL }}" target="_blank" rel="noopener">Visit Resource →</a>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section class="card-panel">
+          <h3>Recommended Certifications</h3>
+          <div class="resource-grid">
+            {% for cert in certifications %}
+              <article class="resource-card">
+                <h4>{{ cert.Certification }}</h4>
+                <p><strong>Provider:</strong> {{ cert.Provider }}</p>
+                <p><strong>Relevant Skill:</strong> {{ cert.Skills[0] if cert.Skills else 'Career readiness' }}</p>
+                <p><strong>Why Consider It:</strong> {{ cert.Reason }}</p>
+                <p><strong>Course / Exam Type:</strong> {{ cert['Course/Exam Type'] }}</p>
+                <a href="{{ cert.URL }}" target="_blank" rel="noopener">Certificate Link →</a>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+
+        <section class="card-panel">
+          <h3>Top Paid Courses for Your Target Role</h3>
+          <div class="resource-grid">
+            {% for course in courses %}
+              <article class="resource-card">
+                <h4>{{ course.Course }}</h4>
+                <p><strong>Platform:</strong> {{ course.Platform }}</p>
+                <p><strong>Instructor / Provider:</strong> {{ course['Instructor / Provider'] }}</p>
+                <p><strong>Skills Covered:</strong> {{ ', '.join(course.Skills) }}</p>
+                <p><strong>Level:</strong> {{ course.Level }}</p>
+                <p><strong>Approximate Duration:</strong> {{ course['Approximate Duration'] }}</p>
+                <p><strong>Price:</strong> {{ course.Price }}</p>
+                <p><strong>Why It May Be Useful:</strong> {{ course['Why It May Be Useful'] }}</p>
+                <a href="{{ course.URL }}" target="_blank" rel="noopener">View Course →</a>
+              </article>
+            {% endfor %}
+          </div>
+        </section>
+      </div>
+    </main>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Career Guide & Resume Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">AI Career Guide</div>
+        <nav class="main-nav">
+          <a href="{{ url_for('index') }}">Home</a>
+          <a href="{{ url_for('career_guide') }}">AI Career Guide</a>
+          <a href="{{ url_for('resume_analyzer') }}">Resume Analyzer</a>
+          <a href="{{ url_for('about') }}">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <span class="eyebrow">Career Growth Assistant</span>
+            <h1>AI Career Guide & Resume Builder</h1>
+            <p class="tagline">Build the skills. Improve your resume. Find your next opportunity.</p>
+            <p class="description">
+              An AI-powered career assistant that creates personalized learning roadmaps,
+              analyzes resumes, recommends certifications and courses, and helps you discover
+              relevant job opportunities.
+            </p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="{{ url_for('career_guide') }}">Build My Career Plan →</a>
+              <a class="btn btn-secondary" href="{{ url_for('resume_analyzer') }}">Analyze My Resume →</a>
+            </div>
+          </div>
+          <div class="hero-panel card-glow">
+            <div class="mini-stat">
+              <span class="label">Career readiness</span>
+              <strong>Personalized</strong>
+            </div>
+            <div class="mini-stat">
+              <span class="label">Learning roadmap</span>
+              <strong>30-Day plan</strong>
+            </div>
+            <div class="mini-stat">
+              <span class="label">ATS guidance</span>
+              <strong>Resume insights</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="feature-cards">
+        <div class="container cards-grid">
+          <article class="feature-card">
+            <div class="card-icon">🧭</div>
+            <h3>AI Career Guide</h3>
+            <p>Discover the skills required for your target role and create a personalized 30-day learning roadmap.</p>
+            <a href="{{ url_for('career_guide') }}" class="link-btn">Build My Career Plan →</a>
+          </article>
+
+          <article class="feature-card">
+            <div class="card-icon">📄</div>
+            <h3>Resume Analyzer</h3>
+            <p>Upload your resume and discover how to improve it for your target job role.</p>
+            <a href="{{ url_for('resume_analyzer') }}" class="link-btn">Analyze My Resume →</a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <span>AI Career Guide & Resume Builder</span>
+        <span>Career clarity for your next step.</span>
+      </div>
+    </footer>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

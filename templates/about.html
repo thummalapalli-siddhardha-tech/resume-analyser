@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand">AI Career Guide</div>
+        <nav class="main-nav">
+          <a href="{{ url_for('index') }}">Home</a>
+          <a href="{{ url_for('career_guide') }}">AI Career Guide</a>
+          <a href="{{ url_for('resume_analyzer') }}">Resume Analyzer</a>
+          <a href="{{ url_for('about') }}">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <div class="container narrow-card">
+        <section class="card-panel">
+          <span class="eyebrow">About This Project</span>
+          <h1>AI Career Guide & Resume Builder</h1>
+          <p>
+            This application is designed to support students, graduates, and job seekers with a practical career roadmap and resume improvement workflow.
+          </p>
+          <p>
+            It combines skill-gap analysis, 30-day planning, resource recommendations, resume evaluation, ATS estimation, and job-search guidance in one modern interface.
+          </p>
+          <p>
+            The project is built using Python and Flask, with structured JSON datasets for roles, resources, certifications, courses, and job portals.
+          </p>
+        </section>
+      </div>
+    </main>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
