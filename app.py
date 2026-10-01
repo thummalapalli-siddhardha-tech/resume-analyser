@@ -1,6 +1,7 @@
 import json
 import os
 import re
+import tempfile
 import uuid
 from pathlib import Path
 from urllib.parse import quote_plus
@@ -426,7 +427,7 @@ def is_allowed_file(filename):
 def create_temp_resume_path(filename):
     safe_name = secure_filename(filename)
     unique = f"{uuid.uuid4()}_{safe_name}"
-    return BASE_DIR / "uploads" / unique
+    return Path(tempfile.gettempdir()) / unique
 
 
 @app.route("/")
@@ -504,6 +505,8 @@ def analyze_resume():
         resume_text = extract_resume_text(file_path)
     except Exception as exc:
         return render_template("resume-analyzer.html", roles=[role["Role"] for role in CAREER_ROLES], error=f"Resume could not be processed: {exc}"), 400
+    finally:
+        file_path.unlink(missing_ok=True)
 
     if not resume_text.strip():
         return render_template("resume-analyzer.html", roles=[role["Role"] for role in CAREER_ROLES], error="The uploaded file did not contain readable text."), 400
